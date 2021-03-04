@@ -12,3 +12,20 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: dev
+
+ecc:
+  security:
+    jwt-secret: bezKoderSecretKey
+    jwt-expiration-ms: 300000
+
+---
+spring:
+  profiles: prod
+
