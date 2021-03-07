@@ -7,9 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,22 +16,25 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "last_update")
-public class LastUpdate {
+@Table(name = "companies")
+public class Company {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private String isin;
+	private String ticker;
+	private String companyName;
+	private String companyMarket;
+	private Boolean watchList;
 	private Date lastUpdate;
-	
 	private String modUser;
 	private Date modDate;
 	
 	@PrePersist
-	void lastUpdate() {
-		this.lastUpdate = new Date();
+	@PreUpdate
+	void company() {
 		this.modDate = new Date();
 	}
 	

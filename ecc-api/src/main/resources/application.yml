@@ -16,6 +16,14 @@ spring:
 server:
   port: 8080
 
+ecc:
+  company-service:
+    sources:
+      gpw:
+        url: https://www.gpw.pl/
+      nc:
+        url: https://newconnect.pl/
+
 ---
 spring:
   profiles: dev
@@ -24,6 +32,11 @@ ecc:
   security:
     jwt-secret: bezKoderSecretKey
     jwt-expiration-ms: 300000
+  company-service:
+    selenium:
+      webdriver:
+        name: webdriver.chrome.driver
+        url: C:\\Users\\damia\\Downloads\\chromedriver_win32\\chromedriver.exe
 
 ---
 spring:

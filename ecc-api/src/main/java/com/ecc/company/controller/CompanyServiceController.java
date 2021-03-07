@@ -41,7 +41,7 @@ public class CompanyServiceController {
 			@PathVariable("companyMarket") String companyMarket,
 			@PathVariable("modUser") String modUser) {
 		
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		return new ResponseEntity<>(companyService.updateCompaniesList(companyMarket, modUser), HttpStatus.OK);
 		
 	}
 	
