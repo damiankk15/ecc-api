@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles", uniqueConstraints = {
-	@UniqueConstraint(columnNames = "name"),
+	@UniqueConstraint(columnNames = "name")
 })
 public class Role {
 	

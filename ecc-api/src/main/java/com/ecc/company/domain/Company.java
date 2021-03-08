@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "companies")
+@Table(name = "companies", uniqueConstraints = {
+	@UniqueConstraint(columnNames = "isin")
+})
 public class Company {
 	
 	@Id
