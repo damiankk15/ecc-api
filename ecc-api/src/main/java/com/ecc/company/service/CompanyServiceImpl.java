@@ -48,7 +48,7 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	public SseEmitter updateCompaniesList(String companyMarket, String modUser) {
 		
-		SseEmitter emitter = new SseEmitter(100000l);
+		SseEmitter emitter = new SseEmitter(36000000000L);
 		SseEvent event = new SseEvent(emitter);
 		ExecutorService executor = Executors.newSingleThreadExecutor();
 		
@@ -148,6 +148,12 @@ public class CompanyServiceImpl implements CompanyService {
 									event.sendEvent(String.valueOf(++eventId), EventTypeEnum.PROGRESS, progress);
 								}
 								
+								try {
+									Thread.sleep(50);
+								} catch(InterruptedException ex) {
+									ex.printStackTrace();
+								}
+								
 							}
 							
 							LastUpdate lastUpdate = new LastUpdate();
@@ -223,6 +229,12 @@ public class CompanyServiceImpl implements CompanyService {
 									e.printStackTrace();
 								} finally {
 									event.sendEvent(String.valueOf(++eventId), EventTypeEnum.PROGRESS, progress);
+								}
+								
+								try {
+									Thread.sleep(50);
+								} catch(InterruptedException ex) {
+									ex.printStackTrace();
 								}
 								
 							}
